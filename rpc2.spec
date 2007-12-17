@@ -11,7 +11,6 @@ Release:	%{release}
 Source0:	%{name}-%{version}.tar.bz2
 URL:		http://www.coda.cs.cmu.edu
 License:	LGPL
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	flex liblwp-devel ncurses-devel readline-devel
 Group:		Development/Other
 
