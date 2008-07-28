@@ -1,6 +1,6 @@
 %define	name	rpc2
 %define	version	2.0
-%define	release	%mkrel 1
+%define	release	%mkrel 3
 %define	major	4
 %define	libname	%mklibname %{name}_ %{major}
 
