@@ -1,9 +1,9 @@
 %define	name	rpc2
 %define	version	2.8
-%define	release	%mkrel 1
+%define	release	%mkrel 2
 %define	major	4
-%define	libname	%mklibname %{name}_ %{major}
-%define	develname	%mklibname %{name}_ -d
+%define	libname	    %mklibname %{name}_ %{major}
+%define	develname	%mklibname %{name} -d
 
 Summary:	RPC2 library
 Name:		%{name}
