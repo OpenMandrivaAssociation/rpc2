@@ -14,6 +14,7 @@ URL:		http://www.coda.cs.cmu.edu
 Source0:	ftp://ftp.wu-wien.ac.at/pub/systems/coda/src/%{name}-%{version}.tar.gz
 Patch:      rpc2-2.8-fix-format-errors.patch
 BuildRequires:	flex
+BuildRequires:	bison
 BuildRequires:	liblwp-devel
 BuildRequires:	ncurses-devel
 BuildRequires:	readline-devel
