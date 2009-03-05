@@ -1,19 +1,24 @@
 %define	name	rpc2
-%define	version	2.0
-%define	release	%mkrel 4
+%define	version	2.8
+%define	release	%mkrel 1
 %define	major	4
 %define	libname	%mklibname %{name}_ %{major}
+%define	develname	%mklibname %{name}_ -d
 
 Summary:	RPC2 library
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-Source0:	%{name}-%{version}.tar.bz2
-URL:		http://www.coda.cs.cmu.edu
 License:	LGPL
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	flex liblwp-devel ncurses-devel readline-devel
+URL:		http://www.coda.cs.cmu.edu
+Source0:	ftp://ftp.wu-wien.ac.at/pub/systems/coda/src/%{name}-%{version}.tar.gz
+Patch:      rpc2-2.8-fix-format-errors.patch
+BuildRequires:	flex
+BuildRequires:	liblwp-devel
+BuildRequires:	ncurses-devel
+BuildRequires:	readline-devel
 Group:		Development/Other
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 The RPC2 library.
@@ -25,32 +30,30 @@ Group:		Development/Other
 %description -n %{libname}
 The RPC2 library.
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	RPC2 library development files
 Group:		Development/Other
 Requires:	%{libname} = %{version}-%{release}
-Provides:	lib%{name}-devel = %{version}-%{release}
 Provides:	rpc2-devel = %{version}-%{release}
+Obsoletes:  %mklibname %{name}_ -d 4
 
-%description -n %{libname}-devel
+%description -n %{develname}
 Headers and static libraries for developing programs using the RPC2 library.
 
 %prep
 %setup -q
+%patch -p 1
 
 %build
 %configure2_5x
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 %makeinstall
-chmod 755 $RPM_BUILD_ROOT%{_libdir}/libfail.so.*
-chmod 755 $RPM_BUILD_ROOT%{_libdir}/librpc2.so.*
-chmod 755 $RPM_BUILD_ROOT%{_libdir}/libse.so.*
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %if %mdkversion < 200900
 %post -p /sbin/ldconfig -n %{libname}
@@ -60,23 +63,17 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /sbin/ldconfig -n %{libname}
 %endif
 
-%files 
-%defattr(-,root,root)
-%doc NEWS
-%{_bindir}/filcon
-
 %files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/libfail.so.*
 %{_libdir}/librpc2.so.*
 %{_libdir}/libse.so.*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
+%doc NEWS
 %{_bindir}/rp2gen
 %{_libdir}/*.a
 %{_libdir}/*.la
 %{_libdir}/*.so
-%dir %{_includedir}/rpc2
-%{_includedir}/rpc2/*
-
+%{_includedir}/rpc2
+%{_libdir}/pkgconfig/rpc2.pc
