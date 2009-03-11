@@ -1,6 +1,6 @@
 %define	name	rpc2
 %define	version	2.8
-%define	release	%mkrel 2
+%define	release	%mkrel 3
 %define	major	4
 %define	libname	    %mklibname %{name}_ %{major}
 %define	develname	%mklibname %{name} -d
@@ -22,14 +22,16 @@ Group:		Development/Other
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
-The RPC2 library.
+RPC2 is a remote procedure call library layered on top of UDP sockets and is
+used by the Coda distributed filesystem. 
 
 %package -n	%{libname}
 Summary:	RPC2 library development files
 Group:		Development/Other
 
 %description -n %{libname}
-The RPC2 library.
+RPC2 is a remote procedure call library layered on top of UDP sockets and is
+used by the Coda distributed filesystem. 
 
 %package -n	%{develname}
 Summary:	RPC2 library development files
