@@ -1,0 +1,20 @@
+diff -Naur --exclude '*~' rpc2-2.8/rpc2-src/rpc2test.c rpc2-2.8-fix-format-errors/rpc2-src/rpc2test.c
+--- rpc2-2.8/rpc2-src/rpc2test.c	2008-08-08 19:42:04.000000000 +0200
++++ rpc2-2.8-fix-format-errors/rpc2-src/rpc2test.c	2009-03-05 22:53:58.000000000 +0100
+@@ -908,14 +908,14 @@
+ {
+     char LineBuf[100];
+ 
+-    if (isatty(fileno(stdin))) printf(gPrompt);
++    if (isatty(fileno(stdin))) printf("%s", gPrompt);
+     fgets(LineBuf, sizeof(LineBuf), stdin); *gVar = atoi(LineBuf);
+     if (!isatty(fileno(stdin))) printf( "%s%ld\n", gPrompt, *gVar);
+ }
+ 
+ static void GetStringVar(char *gSVar, char *gPrompt)
+ {
+-    if (isatty(fileno(stdin))) printf(gPrompt);
++    if (isatty(fileno(stdin))) printf("%s", gPrompt);
+     fgets(gSVar, sizeof(gSVar), stdin);
+     *(gSVar + strlen(gSVar)) = 0;
+     if (!isatty(fileno(stdin))) printf( "%s%s\n", gPrompt, gSVar);
