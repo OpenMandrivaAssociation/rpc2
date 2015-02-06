@@ -5,7 +5,7 @@
 Summary:	RPC2 library
 Name:		rpc2
 Version:	2.10
-Release:	2
+Release:	3
 License:	LGPL
 URL:		http://www.coda.cs.cmu.edu
 Source0:	ftp://ftp.wu-wien.ac.at/pub/systems/coda/src/%{name}-%{version}.tar.gz
