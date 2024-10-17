@@ -7,7 +7,7 @@ Name:		rpc2
 Version:	2.10
 Release:	3
 License:	LGPL
-URL:		http://www.coda.cs.cmu.edu
+URL:		https://www.coda.cs.cmu.edu
 Source0:	ftp://ftp.wu-wien.ac.at/pub/systems/coda/src/%{name}-%{version}.tar.gz
 Patch0:		rpc2-2.8-fix-format-errors.patch
 BuildRequires:	flex
